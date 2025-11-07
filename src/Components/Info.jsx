@@ -77,7 +77,7 @@ export default function Info() {
             <div className='flex items-center gap-5'>
               <img src="./images/icon-sunny.webp" alt="Weather image" className='h-45'/>
 
-              <span className='font-semibold text-[96px] tracking-[-2%]'>
+              <span className='font-semibold italic text-[96px] tracking-[-2%]'>
                 20°
               </span>
             </div>

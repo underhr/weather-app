@@ -13,7 +13,7 @@ function Forecast() {
 
 export default function HourlyForecast() {
     return(
-        <div className="bg-(--neutral-800) rounded-[20px] flex flex-col gap-4 px-4 py-5">
+        <div className="bg-(--neutral-800) rounded-[20px] flex flex-col gap-4 px-4 py-5 lg:w-[384px]">
             <div className="flex justify-between items-center">
                 <h5 className="font-semibold text-[20px] leading-[1.2]">Hourly Forecast</h5>
 
