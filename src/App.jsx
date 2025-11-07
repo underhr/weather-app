@@ -3,6 +3,7 @@ import Search from './Components/Search.jsx'
 import Info from './Components/Info.jsx'
 import Details from './Components/Details.jsx'
 import DailyForecast from './Components/DailyForecast.jsx'
+import HourlyForecast from './Components/HourlyForecast.jsx'
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Info />
         <Details />
         <DailyForecast />
+        <HourlyForecast />
       </div>
     </div>
   )
