@@ -4,10 +4,12 @@
 @font-face {
     font-family: Bricolage;
     src: url('./fonts/Bricolage_Grotesque/BricolageGrotesque-VariableFont_opsz,wdth,wght.ttf');
+    font-weight: bold;
 }
 @font-face {
     font-family: DMSansItalic;
     src: url('./fonts/DM_Sans/DMSans-Italic-VariableFont_opsz,wght.ttf');
+    font-weight: 600;
 }
 @font-face {
     font-family: DMSans;
@@ -17,5 +19,8 @@
 * {
     box-sizing: border-box;
     margin: 0;
+}
+
+body {
     font-family: DMSans;
 }

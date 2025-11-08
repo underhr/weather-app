@@ -7,30 +7,56 @@ import DailyForecast from './Components/DailyForecast.jsx'
 import HourlyForecast from './Components/HourlyForecast.jsx'
 
 function App() {
+  const [coords, setCoords] = useState(null);
   const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
+    if (!navigator.geolocation) {
+      setError("Geolocation is not supported by your browser");
+      return;
+    }
+  
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const { latitude, longitude } = position.coords;
+        setCoords({ latitude, longitude });
+      },
+      (err) => {
+      setError(err.message);
+      }
+    );
+  }, []);
+  
+  useEffect(() => {
+    if (!coords) return; // wait until we have coords
+
     async function fetchData() {
       try {
-        const response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=35&longitude=139&hourly=temperature_2m');
+        const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${coords.latitude}&longitude=${coords.longitude}&current_weather=true`);
+  
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
+
         const fetchedData = await response.json();
         setData(fetchedData);
-        console.log(fetchedData);
       } catch (error) {
-        console.log("Error fetching data:", error)
+        setError(error.message);
+        console.log("Error fetching data:", error);
       }
     }
     fetchData();
-  }, [])
+  }, [coords]);
+  
+  if (error) return <p>Error: {error}</p>;
+  if (!data) return <p>Loading...</p>;
 
   return (
     <div className="p-4 text-white bg-(--neutral-900) min-h-dvh flex flex-col gap-12">
       <Header />
 
-      <h2 className="text-center font-bold leading-[1.2] text-[52px]">
+      <h2 className="text-center font-[Bricolage] leading-[1.2] text-[52px]">
         How's the sky looking today?
       </h2>
 
