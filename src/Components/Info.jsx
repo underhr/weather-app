@@ -71,8 +71,8 @@ export default function Info({ data }) {
           <div className='absolute flex flex-col justify-center items-center gap-4 sm:flex-row sm:justify-between w-full p-6'>
             <div className='text-center sm:text-left'>
               <h4 className='font-bold text-[28px] leading-[1.2]'>
-                {data}
-                Berlin, Germany</h4>
+                Berlin, Germany
+              </h4>
               <h6 className='font-medium text-[18px] leading-[1.2]'>{weekDay}, {month} {date.getDate()}, {date.getFullYear()}</h6>
             </div>
 
@@ -80,7 +80,7 @@ export default function Info({ data }) {
               <img src="./images/icon-sunny.webp" alt="Weather image" className='h-45'/>
 
               <span className='font-[DMSansItalic] text-[96px] tracking-[-2%]'>
-                20°
+                {Math.floor(data.current.temperature_2m)}°
               </span>
             </div>
           </div>
